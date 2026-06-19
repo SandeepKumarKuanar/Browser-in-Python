@@ -11,6 +11,10 @@ class URL:
             url += "/"
         self.host, url = url.split("/", 1)
         self.path = "/" + url
+        ## adding a custom port support to the already made HTTPS support
+        if ":" in self.host:
+            self.host, port = self.host.split(":", 1)
+            self.port = int(port)
         if self.scheme == "http":
             self.port = 80
         elif self.scheme == "https":
